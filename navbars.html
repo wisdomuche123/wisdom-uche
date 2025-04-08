@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+<title>Navbar and Sidenavbar</title>
+<style>
+    
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        /* Navbar Styles */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .menu-btn {
+            font-size: 20px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+        }
+        /* Sidebar Styles */
+        .sidenav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: #333;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+        .sidenav a {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+        .sidenav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 36px;
+            cursor: pointer;
+        }
+        .sidenav.open {
+            left: 0;
+        }
+    .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .logo .icon {
+            width: 80px;
+            height: 80px;
+            background: #2C3E50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        
+        .logo h1 {
+            margin: 10px 0 0;
+            font-size: 24px;
+            color: #2C3E50;
+        }
+    .search-container {
+            display: flex;
+            align-items: center;
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            padding-left:  10px;
+            background-color: #fff;
+            margin-left: 500px;
+            margin-top: 50px;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            padding: 8px;
+            font-size: 16px;
+            flex: 1;
+        }
+
+        .search-container button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-container button i {
+            font-size: 20px;
+            color: #333;
+        }
+
+        .search-container button:hover i {
+            color: #007bff;
+        }
+    
+    .slider-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+        
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            display: block;
+        }
+
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .text-overlay h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .text-overlay p {
+            margin: 10px 0 0;
+            font-size: 1rem;
+        }
+
+        .controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .control {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .control:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .slider-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    display: block;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.text-overlay h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.text-overlay p {
+    margin: 10px 0 0;
+    font-size: 1rem;
+}
+
+.controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.control {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.control:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+*{
+ margin:0px;
+ padding:0px; 
+ font-family:Arial;
+	
+}
+  div{
+   border:0px;
+   padding:3px;
+   min-height:5px;
+   
+  
+}
+body{
+	margin-right:20px;
+	margin-left:20px;
+	border:0px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.grid-item {
+  background: 'black';
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px ;
+}
+
+.grid-item h2 {
+  margin: 15px 0 10px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.grid-item p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1;
+}
+
+hyper-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+            cursor: pointer;
+            transition: color 0.3s ease-in-out;
+        }
+        hyper-text:hover {
+            color: #ff4500;
+            text-decoration: underline;
+        }
+
+.welcome{
+    text-align: center;
+    font-size: 50px;
+    color: #333;
+}
+.wisdom{
+    text-align: center;
+    font-size: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+.testimonial-section {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+}
+
+.testimonial {
+  text-align: center;
+  max-width: 300px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.testimonial-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.testimonial-text {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 1rem;
+}
+.heading{
+    align-content: center;
+    margin: 5x  0PX;
+}
+.testimonial-name {
+  font-weight: bold;
+  color: #333;
+}
+.heading{
+    text-align: center;
+}
+.scroll-button {
+  margin-top: 1.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #ff6f61;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.scroll-button:hover {
+  background-color: #ff4a3d;
+}
+
+.social-link:hover img {
+  transform: scale(1.2);
+}
+.header{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.hyper-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+            cursor: pointer;
+            transition: color 0.3s ease-in-out;
+        }
+        .hyper-text:hover {
+            color: #ff4500;
+            text-decoration: underline;
+        }
+
+.grid {
+            column-count: 2;
+            column-gap: 16px;
+        }
+        @media (min-width: 640px) {
+            .grid {
+                column-count: 3;
+            }
+        }
+        .image-container {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            margin-bottom: 16px;
+        }
+        .image-container img {
+            width: 100%;
+            border-radius: 8px;
+            display: block;
+        }
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+.footer {
+            background: #31125D;
+            color: #fff;
+            padding: 40px 20px;
+        }
+        .footer .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .widget {
+            margin-bottom: 20px;
+        }
+        .widget-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .widget-body li {
+            list-style: none;
+            margin-bottom: 8px;
+        }
+        .widget-body a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .widget-body a:hover {
+            text-decoration: underline;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .social-buttons a {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #fff;
+            text-align: center;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        .social-buttons a:hover {
+            background: #1DA851;
+        }
+        .newsletter input {
+            padding: 10px;
+            width: 70%;
+            border-radius: 20px;
+            border: none;
+        }
+        .newsletter button {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            background: #000;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .newsletter button:hover {
+            background: #444;
+        }
+        @media (max-width: 768px) {
+            .footer-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            .newsletter input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+  
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+        }
+        .marquee {
+            display: flex;
+            animation: marquee 20s linear infinite;
+        }
+        .marquee.reverse {
+            animation-direction: reverse;
+        }
+        .review-card {
+            width: 250px;
+            padding: 15px;
+            margin: 10px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .review-card img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .review-card .name {
+            font-weight: bold;
+        }
+        .review-card .username {
+            font-size: 14px;
+            color: gray;
+        }
+        .review-card .body {
+            font-size: 14px;
+            margin-top: 5px;
+            text-align: center;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); } /* Move halfway to loop seamlessly */
+        }
+
+    
+        .comment-box {
+            max-width: 500px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        textarea, input {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #1877f2;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        button:hover {
+            background-color: #145dbf;
+        }
+        .comments {
+            margin-top: 20px;
+        }
+        .comment {
+            background: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .comment-header {
+            font-weight: bold;
+        }
+        .comment-timestamp {
+            font-size: 0.8em;
+            color: gray;
+            margin-left: 5px;
+        }
+        .like-btn, .reply-btn, .delete-btn {
+            background: none;
+            border: none;
+            color: #1877f2;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .like-btn:hover, .reply-btn:hover, .delete-btn:hover {
+            text-decoration: underline;
+        }
+        .replies {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+    <!-- Navbar -->
+    <div class="navbar">
+        <button class="menu-btn" onclick="toggleNav()">☰ Menu</button>
+        <div>
+            <a href="navbars.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+            <a href="signin.html">sign in</a>
+        </div>
+    </div>
+    
+    <!-- Sidebar Navigation -->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="navbars.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="signin.html">Sign In</a>
+        <a href="tutorials.html">Tutorials</a>
+    </div>
+<div class="logo">
+    <div class="icon">🎓</div>
+    <h1>GREAT WISDOM ACADEMY</h1>
+</div>
+
+<div class="search-container">
+    <input type="text" placeholder="Search...">
+    <button><i class="fas fa-search"></i></button>
+</div>
+
+
+    <section>
+    <h1 class="welcome">welcome to GREAT WISDOM ACADEMY</h1>
+    <p class="wisdom">welcome to my website were we build website,apps,ui/ux we deal with all kind of website build app and design ui/ux so. You can also learn coding in a very SIMPLE WAY and also experience the magic of coding in your furture,do not waste your time on low class come in coding and see prefection of it and get into the online class for anyone that is ready to enroll  </p>
+<div class="slider-container">
+<div class="slider">
+    <div class="slide">
+        <img src="C:\Users\everest okwara\Downloads\download (4).jpg" alt="Slide 1">
+        <div class="text-overlay">
+            <h1>APP DEVELOPMENT</h1>
+            <p>Do You Want To Learn How To Build App </p>
+        </div>
+    </div>
+    <div class="slide">
+        <img src="C:\Users\everest okwara\Downloads\download (5).jpg" alt="Slide 2">
+        <div class="text-overlay">
+            <h1>WEB DEVELOPMENT</h1>
+            <p>Do You Want To Learn On How To Build A Website.</p>
+        </div>
+    </div>
+    <div class="slide">
+        <img src="C:\Users\everest okwara\Downloads\download (6).jpg" alt="Slide 3">
+        <div class="text-overlay">
+            <h1>UI/UX</h1>
+            <p>Do You Want To Learn On How To Build Ui/Ux.</p>
+        </div>
+    </div>
+</div>
+<div class="controls">
+    <button class="control" id="prev">&#10094;</button>
+    <button class="control" id="next">&#10095;</button>
+</div>
+</div>
+<br/>
+
+<section id="photos" class="grid"></section>
+
+<section>
+    <span class="hyper-text">WHAT WE OFFER</span>
+<div class="grid-container">
+    <div class="grid-item">
+      <img src="assets/images/wisdom6 (2).jpg" alt="Placeholder Image">
+      <h2>APP DEVELOPMENT</h2>
+      <p>Do you want to learn how to build apps. Come and learn how to build your apps!!!</p>
+    </div>
+    <div class="grid-item">
+      <img src="assets/images/wisdom2.jpg" alt="Placeholder Image">
+      <h2>WEB DEVELOPMENT</h2>
+      <p>build your website in a very easy way. learn how to build your website i mean your pesonal website.</p>
+    </div>
+    <div class="grid-item">
+      <img src="assets/images/wisdom5.jpg" alt="Placeholder Image">
+      <h2>UI/UX</h2>
+      <p>This is a description for item 3. Add your own text to fit your needs.</p>
+    </div>
+</section>
+
+<section>
+
+          <h2 class="heading">TESTIMONIAL</h2>
+  <section class="testimonial-section">
+    
+    <div class="testimonial">
+      <img src="assets/images/dowload7.jpg" alt="Picture of wisdom everest" class="testimonial-image">
+      <blockquote class="testimonial-text">
+        "With coding and programing i have be able to acrchive so many goal with five star, This service completely changed my life! Highly recommended for anyone looking for a seamless experience."
+      </blockquote>
+      <p class="testimonial-name">Wisdom everest</p>
+    </div>
+  
+    <div class="testimonial">
+      <img src="assets/images/download (8).jpg" alt="Picture of Jane Smith" class="testimonial-image">
+      <blockquote class="testimonial-text">
+        "I have study this service well ,Amazing quality and excellent customer service. I couldn’t be happier with my choice."
+      </blockquote>
+      <p class="testimonial-name">Angel smith</p>
+    </div>
+    <div class="testimonial">
+        <img src="assets/images/dawload (9).jpg" alt="Picture of mark emma" class="testimonial-image">
+        <blockquote class="testimonial-text">
+          "In this place they deal all kind of coding and programing i have experience and excellent service give to all and i am happy to have taking the right choice."
+        <p class="testimonial-name">mark emma</p>
+      </div>
+  </section>
+
+
+  <div class="marquee-container">
+    <div class="marquee" id="marquee1"></div>
+</div>
+<div class="marquee-container">
+    <div class="marquee reverse" id="marquee2"></div>
+</div>
+
+<div class="comment-box">
+    <h3>Leave a Comment</h3>
+    <input type="text" id="username" placeholder="Your name">
+    <textarea id="commentInput" placeholder="Write your comment..."></textarea>
+    <button onclick="postComment()">Post</button>
+    <div class="comments" id="commentSection"></div>
+</div>
+
+  <footer class="footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="widget">
+                <h3 class="widget-title">SUPPORT</h3>
+                <ul class="widget-body">
+                    <li>26 New Karu Nyaya Road, Abuja</li>
+                </ul>
+            </div>
+            <div class="widget">
+                <h4 class="widget-title">ACCOUNT</h4>
+                <ul class="widget-body">
+                    <li><a href="signin.html">sign in</a></li>
+                    <li><a href="signin.html">sign up</a></li>
+                    <li><a href="/cart">View Cart</a></li>
+                </ul>
+            </div>
+            <div class="widget">
+                <h4 class="widget-title">QUICK LINKS</h4>
+                <ul class="widget-body">
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/terms-and-conditions">Terms of Use</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="newsletter">
+                <h4>Subscribe to Our Newsletter</h4>
+                <input type="email" placeholder="Your Email" id="emailInput">
+                <button onclick="subscribe()">Subscribe</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; GREAT WISDOM. All Rights Reserved.</p>
+            <div class="social-buttons">
+                <a href="https://wa.me/message/JD3DKS3BCODDJ1" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    function subscribe() {
+        let email = document.getElementById("emailInput").value;
+        if(email) {
+            alert("Thank you for subscribing!");
+        } else {
+            alert("Please enter a valid email address.");
+        }
+    }
+</script>
+  
+  
+  <script src="script.js"></script>
+
+<script>
+const slider = document.querySelector('.slider');
+const slides = document.querySelectorAll('.slide');
+const prevButton = document.getElementById('prev');
+const nextButton = document.getElementById('next');
+
+let currentIndex = 0;
+
+function updateSliderPosition() {
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+function showPrevSlide() {
+    currentIndex = (currentIndex === 0) ? slides.length - 1 : currentIndex - 1;
+    updateSliderPosition();
+}
+
+function showNextSlide() {
+    currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
+    updateSliderPosition();
+}
+
+function startAutoSlide() {
+    setInterval(() => {
+        showNextSlide();
+    }, 3000);
+}
+
+prevButton.addEventListener('click', showPrevSlide);
+nextButton.addEventListener('click', showNextSlide);
+
+startAutoSlide();
+</script>
+
+
+<script>
+    function toggleNav() {
+        document.getElementById("mySidenav").classList.toggle('open');
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").classList.remove('open');
+    }
+</script>
+<script>
+// Update business name or contact dynamically
+document.addEventListener("DOMContentLoaded", () => {
+  const businessName = document.getElementById("business-name");
+  const contactInfo = document.getElementById("contact-info");
+
+  // Example of dynamic updates
+  businessName.textContent = "Dynamic Business Name";
+  contactInfo.textContent = "Contact: (987) 654-3210 | dynamicemail@business.com";
+});
+
+// Smooth scroll to top
+document.getElementById("scroll-top").addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
+// Log social media interactions
+const socialLinks = document.querySelectorAll(".social-link");
+socialLinks.forEach(link => {
+  link.addEventListener("click", (event) => {
+    console.log(`Navigating to: ${link.href}`);
+  });
+});
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const container = document.getElementById("photos");
+        const images = [
+            "assets/images/Academic Integrity.jpg",
+            "assets/images/I will figma, web design,ui ux, landing page, app mobile, figma.jpg",
+            "assets/images/UI Design mistakes to avoid_ 😎.jpg ",
+            "assets/images/Online Product Management Certification and live training - Product School.jpg",
+            "assets/images/Social media designs.jpg",
+            "assets/images/Custom Web & Mobile App Development – Let’s Bring Your Idea to Life.jpg",
+            "assets/images/Programming Lang_ You Should Learn.jpg",
+            "assets/images/Looking for the Best Web Development Company in India.jpg",
+            "assets/images/Web development ad design.jpg"
+        ];
+
+        images.forEach((src, index) => {
+            const imgWrapper = document.createElement("div");
+            imgWrapper.classList.add("image-container");
+            imgWrapper.style.transitionDelay = `${0.25 + index * 0.05}s`;
+            
+            const img = document.createElement("img");
+            img.src = src;
+            img.alt = `Custom image ${index + 1}`;
+            img.loading = "lazy";
+            
+            imgWrapper.appendChild(img);
+            container.appendChild(imgWrapper);
+        });
+
+        const revealImages = () => {
+            document.querySelectorAll(".image-container").forEach(img => {
+                const rect = img.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.9) {
+                    img.classList.add("fade-in");
+                }
+            });
+        };
+        
+        window.addEventListener("scroll", revealImages);
+        revealImages();
+    });
+</script>
+
+<script type="module">
+    import { HyperText } from "https://magicui.design/r/hyper-text";
+</script>
+
+
+<script>
+    const reviews = [
+        { name: "Jack", username: "@jack", body: "I've never seen anything like this before. It's amazing. I love it.", img: "https://avatar.vercel.sh/jack" },
+        { name: "Jill", username: "@jill", body: "I don't know what to say. I'm speechless. This is amazing.", img: "https://avatar.vercel.sh/jill" },
+        { name: "John", username: "@john", body: "I'm at a loss for words. This is amazing. I love it.", img: "https://avatar.vercel.sh/john" },
+        { name: "Jane", username: "@jane", body: "I'm at a loss for words. This is amazing. I love it.", img: "https://avatar.vercel.sh/jane" },
+        { name: "Jenny", username: "@jenny", body: "I'm at a loss for words. This is amazing. I love it.", img: "https://avatar.vercel.sh/jenny" },
+        { name: "James", username: "@james", body: "I'm at a loss for words. This is amazing. I love it.", img: "https://avatar.vercel.sh/james" },
+    ];
+
+    function createReviewCard(review) {
+        const card = document.createElement("div");
+        card.classList.add("review-card");
+        card.innerHTML = `
+            <img src="${review.img}" alt="${review.name}">
+            <div class="name">${review.name}</div>
+            <div class="username">${review.username}</div>
+            <div class="body">${review.body}</div>
+        `;
+        return card;
+    }
+
+    function populateMarquee(containerId, reviews) {
+        const container = document.getElementById(containerId);
+        // Add reviews twice to create a seamless loop
+        [...reviews, ...reviews].forEach(review => container.appendChild(createReviewCard(review)));
+    }
+
+    populateMarquee("marquee1", reviews.slice(0, reviews.length / 2));
+    populateMarquee("marquee2", reviews.slice(reviews.length / 2));
+</script>
+
+<script>
+    const videoSrc = "https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb";
+    const thumbnail = document.getElementById("thumbnail");
+    const videoDialog = document.getElementById("videoDialog");
+    const videoFrame = document.getElementById("videoFrame");
+
+    function openVideo() {
+        videoFrame.src = videoSrc;
+        videoDialog.style.display = "block";
+    }
+    function closeVideo() {
+        videoFrame.src = "";
+        videoDialog.style.display = "none";
+    }
+
+    thumbnail.addEventListener("click", openVideo);
+</script>
+
+<script>
+    function postComment() {
+        let username = document.getElementById("username").value.trim();
+        let commentInput = document.getElementById("commentInput");
+        let commentText = commentInput.value.trim();
+        if (commentText === "" || username === "") return;
+
+        let commentSection = document.getElementById("commentSection");
+        let commentDiv = document.createElement("div");
+        commentDiv.classList.add("comment");
+
+        let timestamp = new Date().toLocaleString();
+        commentDiv.innerHTML = `<div class='comment-header'>${username} <span class='comment-timestamp'>${timestamp}</span></div>
+                                <p>${commentText}</p>
+                                <button class='like-btn' onclick='likeComment(this)'>Like (0)</button>
+                                <button class='reply-btn' onclick='replyToComment(this, "${username}")'>Reply</button>
+                                <button class='delete-btn' onclick='deleteComment(this)'>Delete</button>
+                                <div class='replies'></div>`;
+        
+        commentSection.appendChild(commentDiv);
+        commentInput.value = "";
+    }
+
+    function likeComment(button) {
+        let count = parseInt(button.textContent.match(/\d+/)[0]);
+        count++;
+        button.textContent = `Like (${count})`;
+    }
+
+    function replyToComment(button, username) {
+        let replyText = prompt("Enter your reply:");
+        if (!replyText) return;
+
+        let repliesDiv = button.parentElement.querySelector(".replies");
+        let replyDiv = document.createElement("div");
+        replyDiv.classList.add("comment");
+        replyDiv.style.backgroundColor = "#f0f2f5";
+
+        let timestamp = new Date().toLocaleString();
+        replyDiv.innerHTML = `<div class='comment-header'>${username} <span class='comment-timestamp'>${timestamp}</span></div>
+                              <p>${replyText}</p>
+                              <button class='like-btn' onclick='likeComment(this)'>Like (0)</button>
+                              <button class='delete-btn' onclick='deleteComment(this)'>Delete</button>`;
+        
+        repliesDiv.appendChild(replyDiv);
+    }
+
+    function deleteComment(button) {
+        button.parentElement.remove();
+    }
+</script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        let scene, camera, renderer, particles, particleSystem;
+
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(
+                75,
+                window.innerWidth / window.innerHeight,
+                0.1,
+                1000
+            );
+            camera.position.z = 5;
+
+            renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            const particleGeometry = new THREE.BufferGeometry();
+            const particleCount = 500;
+            const positions = new Float32Array(particleCount * 3);
+
+            for (let i = 0; i < particleCount * 3; i++) {
+                positions[i] = (Math.random() - 0.5) * 10;
+            }
+
+            particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const particleMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.05 });
+            particleSystem = new THREE.Points(particleGeometry, particleMaterial);
+            scene.add(particleSystem);
+
+            animate();
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            particleSystem.rotation.y += 0.001;
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+
+        init();
+    </script>
+
+<!-- About Section Link -->  
+<!--<a href="https:/youtube\.com" target="">About Us</a>  
+
+<--<a href="https://yourwebsite.com/services" target="_blank">Our Services</a>-->
+
+</body>
+</html>
